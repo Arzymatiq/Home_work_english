@@ -1,0 +1,13 @@
+/* styles.css */
+.container {
+    flex: 1;
+    background-color: rgb(21, 32, 64);
+    align-items: center;
+    justify-content: center;
+}
+
+.mainText {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /* Другие стили здесь */
+}
