@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import NoteItem from "./NotesItem";
-
-const API_URL = "http://192.168.251.95:3001/posts"; // Правильный адрес эндпоинта для получения данных
+import { Post_Api } from "../helper/helper";
 
 const NoteList = (props) => {
     const [posts, setPosts] = useState([]);
@@ -10,7 +9,7 @@ const NoteList = (props) => {
     // Чтение (Read) - получение данных с сервера
     const fetchPosts = async () => {
         try {
-            const response = await fetch(API_URL);
+            const response = await fetch(Post_Api);
             const data = await response.json();
             setPosts(data);
         } catch (error) {
@@ -22,7 +21,7 @@ const NoteList = (props) => {
     const createPost = async () => {
         try {
             const newPost = { title: "New Post", body: "This is a new post" };
-            const response = await fetch(API_URL, {
+            const response = await fetch(Post_Api, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +38,7 @@ const NoteList = (props) => {
     // Удаление (Delete) - удаление записи
     const deletePost = async (id) => {
         try {
-            await fetch(`${API_URL}/${id}`, {
+            await fetch(`${Post_Api}/${id}`, {
                 method: "DELETE",
             });
             const updatedPosts = posts.filter((post) => post.id !== id);

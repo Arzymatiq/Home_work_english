@@ -14,6 +14,7 @@ import { ScrollView } from "react-native";
 import axios from "axios";
 import NewsItem from "./NewsItem"; // Импортируйте компонент NewsItem
 import { NewsArr } from "../helper/helper"; // Импортируйте NewsArr из правильного пути
+import { News_Api } from "../helper/helper";
 
 function NewsList(props) {
     const [newsList, setNewsList] = useState([]);
@@ -22,7 +23,7 @@ function NewsList(props) {
 
     async function getNews() {
         try {
-            const response = await axios.get("http://192.168.251.95:3001/news");
+            const response = await axios.get(News_Api);
 
             if (response.status === 200) {
                 setNewsList(response.data);

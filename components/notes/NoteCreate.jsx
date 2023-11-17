@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
+import { Post_Api } from "../helper/helper";
 
 const NoteCreate = (props) => {
     const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ const NoteCreate = (props) => {
 
         // Пример использования fetch для отправки данных на сервер
         try {
-            const response = await fetch("http://192.168.251.95:3001/posts", {
+            const response = await fetch(Post_Api, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
